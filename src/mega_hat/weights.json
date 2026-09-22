@@ -1,0 +1,6 @@
+{
+  "megapose-models/coarse-rgb-906902141/config.yaml": "24de955519e9d65c82a237b29844576989504e956448ecae07b0e2f2b6675bd9",
+  "megapose-models/coarse-rgb-906902141/checkpoint.pth.tar": "30fa2ba97d1bb1b27f6443b6671f557baebf3dff93fcc8605a6c7924ead759a4",
+  "megapose-models/refiner-rgb-653307694/config.yaml": "29e02244d9b674fd5e374c9902b567cfe5ef4e2e2e3fef01dd1d6188df7b7d84",
+  "megapose-models/refiner-rgb-653307694/checkpoint.pth.tar": "52dd473fc719488e2f45a98aac2f83960ebe1534b2845cb292c0a287ba70adb7"
+}
