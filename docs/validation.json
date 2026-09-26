@@ -1,0 +1,131 @@
+{
+  "release": "0.1.0",
+  "date": "2026-09-22",
+  "temporal_replay": [
+    {
+      "dataset": "spark",
+      "raw_frames": 300,
+      "emitted_frames": 300,
+      "exact": true,
+      "max_error": 0.0,
+      "seconds": 1.00653993524611,
+      "input_sha256": "c1e9887b077760f69bc29bc7a13972f36f1c01bfb707154c8ca8faa8c93dc1a7"
+    },
+    {
+      "dataset": "ycbv",
+      "raw_frames": 2243,
+      "emitted_frames": 75,
+      "exact": true,
+      "max_error": 0.0,
+      "seconds": 0.4880304615944624,
+      "input_sha256": "46e5bf79075324ff46bb0087fc73781714f3089d056b66f0bdaee5e581d1511e"
+    },
+    {
+      "dataset": "swisscube",
+      "raw_frames": 100,
+      "emitted_frames": 100,
+      "exact": true,
+      "max_error": 0.0,
+      "seconds": 0.323980001732707,
+      "input_sha256": "fe267fca64832b02ee09bb3b7865102a4b6b10767ffa4acd42a80f73d070bbde"
+    },
+    {
+      "dataset": "shirt",
+      "raw_frames": 2371,
+      "emitted_frames": 2371,
+      "exact": true,
+      "max_error": 0.0,
+      "seconds": 20.57001935504377,
+      "input_sha256": "81cf2711841764cbe2d0b0ee9d42945c4592382f4c72eb248d4f00f5703ef487"
+    }
+  ],
+  "cpu_tests": {
+    "python_3_10_numpy_2_2_6_scipy_1_15_3": 23
+  },
+  "renderer_test": {
+    "passed": true,
+    "renderer": "native MegaPose Panda3D/EGL",
+    "checks": [
+      "textured OBJ and material preservation",
+      "off-centre original coordinates",
+      "OpenCV camera convention",
+      "metre/millimetre equivalence",
+      "baked scene-node transforms"
+    ]
+  },
+  "native_sources": {
+    "MegaPose": "f3b8e1247f133f3d098833a251b8f2d744c03e1f",
+    "DROID-SLAM": "2dfd39f0dcad44012ca7bbb8aa70b55edbfa9c99"
+  },
+  "gpu_environment": {
+    "python": "3.10.12",
+    "torch": "2.7.1+cu118",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "dependencies": "Existing GPU dependencies and DROID compiled extensions reused; clean pinned MegaPose checkout plus release patch",
+    "fresh_gpu_dependency_install": false
+  },
+  "gpu_runs": [
+    {
+      "frames": 300,
+      "valid_poses": 300,
+      "anchor_calls": 75,
+      "pose_convention": "object-to-camera",
+      "translation_units": "m",
+      "future_frames": 0,
+      "config": "hat-shared-causal",
+      "name": "gpu_masks",
+      "replay_bit_exact": true,
+      "slam_valid_frames": 280,
+      "held_frames": 36,
+      "fusion_ready_frames": 252,
+      "poses_sha256": "6fe805d60c8f03c5b8754595d27ca04188d0af12b37ceb55fd6ba94409a74c9d",
+      "observations_sha256": "d45ba7b105ad159981a8796baa5b6bdf3403db8ec9ca12f3efb89325fddebe62"
+    },
+    {
+      "frames": 300,
+      "valid_poses": 300,
+      "anchor_calls": 75,
+      "pose_convention": "object-to-camera",
+      "translation_units": "m",
+      "future_frames": 0,
+      "config": "hat-shared-causal",
+      "name": "gpu_boxes",
+      "replay_bit_exact": true,
+      "slam_valid_frames": 267,
+      "held_frames": 36,
+      "fusion_ready_frames": 252,
+      "poses_sha256": "5b630e6dbfbb4ac82b68f6ccf48fb34c898ca18d4e86b835ae6b60f8e529ccf5",
+      "observations_sha256": "f042b52fd5928148534e025105578108e81d97e386e5546d2c737c4944e7bb1d"
+    }
+  ],
+  "source_sha256": {
+    "src/mega_hat/__init__.py": "741c1972dc6178eca327315561819f1f75499f8c04ce4a41649ed174c5350ee3",
+    "src/mega_hat/cli.py": "bcc08e72e618699c9dc0e167681a05304543368648ba5ced5966c4643dfd2afb",
+    "src/mega_hat/coarse_cache.py": "16918b3f9929e74c999ce9fad80375da1eeb16c368fc22449e6008f7bc3bd267",
+    "src/mega_hat/config.py": "b6051582cce2bc4bc036014c5d222bffe83c07b1cc82fd4ace6c6d93f72ff268",
+    "src/mega_hat/droid.py": "d5c3f10f3bfb37031d4a5e3ee3f12a034b35c202ab1b2d9f3ebca05b138136df",
+    "src/mega_hat/droid_readout.py": "95b2cd1ab9a5104b2511c696ae657165c7b9295dade34272e173ec319a79a7f0",
+    "src/mega_hat/fusion.py": "d91f5d041093b5e8f041c7483c7e8275f60d2f90d88dc7589ebb0713a08ae294",
+    "src/mega_hat/geometry.py": "544dbb7662594b11688f9b122fd675a75cdef02160bc13f948c5d4a559945f48",
+    "src/mega_hat/mega.py": "b18d2f782208df6a9bd27a6dc36b0a94eeba37f95f2d0cb16dae2d5142d637db",
+    "src/mega_hat/objects.py": "6005f151526d650c971146138fb00c8183f0b2f916770b0ab652703e1d473340",
+    "src/mega_hat/runtime.py": "6aecb2cebaf5995524316a0194b3f053c7ef042ddf3f6cb42ad23d3b802a3ab6",
+    "src/mega_hat/selector.py": "70e37c6a91e333519af24e6ff828b54f86c90018160838ee8ae66eaf72e05082",
+    "src/mega_hat/sequence.py": "9d3441179dae3c1ee1e38027b9e4efa6327c28ac81eab97b8c918765dbfaf8c4",
+    "src/mega_hat/tracker.py": "714b5b9cc468c226a0fa944ecad9d0839887536b1d54368c67bb8a2a98b0c47d",
+    "src/mega_hat/weights.py": "7c1bbdcbbd9d714d96e4720f6b0a7445a7d7d85b41ab4f31196e77671c576425",
+    "src/mega_hat/worker.py": "086365575a6078c1643db794ff5b4751f29b803935b33b12d94a8bbbddaf56fa",
+    "src/mega_hat/shared.json": "753cc83aa31cff3e3babac6c1468239076fd38ef0bef3d920fc2c0625edf4a9b",
+    "src/mega_hat/weights.json": "447291aa36b84ea920d4c6937edec2af5edf5bd3e265cf72663c298f061d51f5",
+    "patches/megapose-runtime.patch": "2e72e67103829436c933ef4cfa557c66c83be8d0b634281a6838bb6828d25c2c"
+  },
+  "packaging": {
+    "isolated_installed_wheel_tests": 23,
+    "pip_check": "passed",
+    "lint": "passed",
+    "format": "passed",
+    "wheel_resources": "passed",
+    "sdist_resources": "passed"
+  }
+}

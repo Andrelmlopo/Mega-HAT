@@ -1,0 +1,11 @@
+{
+  "mega_python": "../.venv-mega/bin/python",
+  "mega_source": "../third_party/megapose6d",
+  "droid_python": "../.venv-droid/bin/python",
+  "droid_source": "../third_party/DROID-SLAM",
+  "droid_checkpoint": "../weights/droid.pth",
+  "droid_buffer": 512,
+  "seed": 0,
+  "timeout_seconds": 600,
+  "mega_data": "../weights"
+}
