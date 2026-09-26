@@ -21,7 +21,10 @@ python3 scripts/fetch_sources.py
 
 The helper applies [megapose-runtime.patch](../patches/megapose-runtime.patch):
 virtual-environment Python lookup, NumPy 2 types, headless EGL rendering and
-explicit glTF axis preservation. It accepts an existing checkout only if its
+explicit glTF axis preservation. It also permits the requested mesh-point count
+for small CAD meshes by sampling vertices with replacement when necessary;
+sampling for meshes with enough vertices is unchanged.
+It accepts an existing checkout only if its
 revision and tracked changes match this release. DROID submodules are fetched
 at their recorded revisions. Upstream sources are excluded from this repository.
 
@@ -44,11 +47,16 @@ python3.10 -m venv .venv-mega
 .venv-mega/bin/python -m pip install -r requirements-mega.txt
 .venv-mega/bin/python -m pip install --no-deps .
 .venv-mega/bin/python -m pip check
+.venv-mega/bin/python -c "import pinocchio, png"
 ```
 
 The adapter imports MegaPose directly from the pinned checkout. MegaPose's
 `pin` dependency supplies Pinocchio. Its binary companion versions are pinned
-alongside it. Install the NVIDIA EGL driver libraries for hardware rendering.
+alongside it, including TinyXML 10: the Pinocchio/urdfdom wheels require
+`libtinyxml2.so.10`, which TinyXML 11 does not provide. `pypng` is required by
+MegaPose's bundled BOP toolkit even for inference. The import check above catches
+missing native libraries that `pip check` cannot detect.
+Install the NVIDIA EGL driver libraries for hardware rendering.
 When necessary, point `__EGL_VENDOR_LIBRARY_FILENAMES` at your NVIDIA EGL vendor
 JSON. Do not use a machine-specific file path copied from another system.
 

@@ -12,6 +12,28 @@ pytestmark = pytest.mark.skipif(
 )
 
 
+def test_native_inference_dependencies_import():
+    sys.path.insert(0, str(Path(os.environ["MEGAPOSE_SOURCE"]) / "src"))
+    from megapose.inference.pose_estimator import PoseEstimator
+
+    assert callable(PoseEstimator)
+
+
+def test_native_mesh_sampling_supports_small_cad():
+    sys.path.insert(0, str(Path(os.environ["MEGAPOSE_SOURCE"]) / "src"))
+    import torch
+    from megapose.lib3d.mesh_ops import sample_points
+
+    sparse = torch.arange(24, dtype=torch.float32).reshape(1, 8, 3)
+    sampled = sample_points(sparse, 2000, deterministic=True)
+    assert sampled.shape == (1, 2000, 3)
+    assert torch.equal(sampled, sample_points(sparse, 2000, deterministic=True))
+    assert all(any(torch.equal(p, v) for v in sparse[0]) for p in sampled[0])
+    dense = torch.arange(9000, dtype=torch.float32).reshape(1, 3000, 3)
+    original_ids = np.random.RandomState(0).choice(3000, size=2000, replace=False)
+    assert torch.equal(sample_points(dense, 2000, deterministic=True), dense[:, original_ids])
+
+
 def test_native_renderer_preserves_textured_obj_coordinates(tmp_path):
     sys.path.insert(0, str(Path(os.environ["MEGAPOSE_SOURCE"]) / "src"))
     from megapose.datasets.object_dataset import RigidObject, RigidObjectDataset
